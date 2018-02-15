@@ -4,60 +4,31 @@ import java.util.List;
 
 public interface Shop {
 
-    String getName() {
-        return null;
-    }
+    String getName();
 
-    String getOwner() {
-        return null;
-    }
+    String getOwner();
 
-    boolean isOpen() {
-        return false;
-    }
+    boolean isOpen();
 
-    void open() {
+    void open();
 
-    }
+    void close();
 
-    void close() {
+    Product findByName(String name) throws NoSuchProductException, ShopIsClosedException;
 
-    }
+    boolean hasProduct(long barcode) throws ShopIsClosedException;
 
-    Product findByName(String name) throws NoSuchProductException, ShopIsClosedException {
-        return null;
-    }
+    void addNewProduct(Product product, int quantity, float price) throws ProductAlreadyExistsException, ShopIsClosedException;
 
-    boolean hasProduct(long barcode) throws ShopIsClosedException {
-        return false;
-    }
+    void addProduct(long barcode, int quantity) throws NoSuchProductException, ShopIsClosedException;
 
-    void addNewProduct(Product product, int quantity, float price) throws ProductAlreadyExistsException, ShopIsClosedException {
+    Product buyProduct(long barcode) throws NoSuchProductException, OutOfStockException, ShopIsClosedException;
 
-    }
+    List<Product> buyProducts(long barcode, int quantity) throws NoSuchProductExceptio;n, OutOfStockException, ShopIsClosedException;
 
-    void addProduct(long barcode, int quantity) throws NoSuchProductException, ShopIsClosedException {
+    float getPrice(long barcode);
 
-    }
+    List<Product> getProducts();
 
-    Product buyProduct(long barcode) throws NoSuchProductException, OutOfStockException, ShopIsClosedException {
-        return null;
-    }
-
-    List<Product> buyProducts(long barcode, int quantity) throws NoSuchProductException, OutOfStockException, ShopIsClosedException {
-        return null;
-    }
-
-    float getPrice(long barcode) {
-        return price;
-    }
-
-    List<Product> getProducts() {
-        return null;
-    }
-
-    String toString() {
-        return null;
-    }
-
+    String toString();
 }
