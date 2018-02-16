@@ -13,6 +13,11 @@ public class ShopImpl implements Shop {
         this.owner = owner;
     }
 
+    @Override
+    public String getName() {
+        return name;
+    }
+
     private class ShopEntryImpl {
 
         private Product product;
@@ -30,6 +35,7 @@ public class ShopImpl implements Shop {
         }
 
         public void setProduct(Product product) {
+            this.product = product;
         }
 
         public int getQuantity() {
@@ -37,28 +43,27 @@ public class ShopImpl implements Shop {
         }
 
         public void setQuantity(int quantity) {
-
+            this.quantity = quantity;
         }
 
         public void increaseQuantity(int amount) {
-
+            quantity += amount;
         }
 
         public void decreaseQuantity(int amount) {
-
+            quantity -= amount;
         }
 
         public float getPrice() {
             return price;
         }
 
-        public void setPrice(int price) {
-
+        public void setPrice(float price) {
+            this.price = price;
         }
 
         public String toString() {
             return null;
         }
-
     }
 }
