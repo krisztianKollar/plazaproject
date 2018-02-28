@@ -1,5 +1,10 @@
 package com.codecool.plaza.api;
 
+import com.codecool.plaza.api.exceptions.NoSuchProductException;
+import com.codecool.plaza.api.exceptions.OutOfStockException;
+import com.codecool.plaza.api.exceptions.ProductAlreadyExistsException;
+import com.codecool.plaza.api.exceptions.ShopIsClosedException;
+
 import java.util.List;
 
 public interface Shop {
@@ -20,11 +25,11 @@ public interface Shop {
 
     void addNewProduct(Product product, int quantity, float price) throws ProductAlreadyExistsException, ShopIsClosedException;
 
-    void addProduct(long barcode, int quantity) throws NoSuchProductException, ShopIsClosedException;
+    void addProduct(long barcode, int quantity) throws ShopIsClosedException;
 
     Product buyProduct(long barcode) throws NoSuchProductException, OutOfStockException, ShopIsClosedException;
 
-    List<Product> buyProducts(long barcode, int quantity) throws NoSuchProductExceptio;n, OutOfStockException, ShopIsClosedException;
+    List<Product> buyProducts(long barcode, int quantity) throws NoSuchProductException, OutOfStockException, ShopIsClosedException;
 
     float getPrice(long barcode);
 

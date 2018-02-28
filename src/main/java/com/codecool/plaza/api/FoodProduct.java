@@ -14,10 +14,10 @@ public class FoodProduct extends Product {
     }
 
     public boolean isStillConsumable() {
-        if (Date.before(bestBefore)) {
+        //if (Date.before(bestBefore)) {
             return true;
-        }
-        return false;
+//        }
+//        return false;
     }
 
     public int getCalories() {

@@ -1,5 +1,11 @@
 package com.codecool.plaza.api;
 
+import com.codecool.plaza.api.exceptions.NoSuchProductException;
+import com.codecool.plaza.api.exceptions.OutOfStockException;
+import com.codecool.plaza.api.exceptions.ProductAlreadyExistsException;
+import com.codecool.plaza.api.exceptions.ShopIsClosedException;
+
+import java.util.List;
 import java.util.Map;
 
 public class ShopImpl implements Shop {
@@ -7,6 +13,7 @@ public class ShopImpl implements Shop {
     private String name;
     private String owner;
     private Map<Long, ShopEntryImpl> products;
+    private boolean open = false;
 
     public ShopImpl(String name, String owner) {
         this.name = name;
@@ -14,8 +21,73 @@ public class ShopImpl implements Shop {
     }
 
     @Override
+    public String getOwner() {
+        return owner;
+    }
+
+    @Override
+    public boolean isOpen() {
+        return open;
+    }
+
+    @Override
+    public void open() { open = true; }
+
+    @Override
+    public void close() { open = false; }
+
+    @Override
+    public boolean hasProduct(long barcode) throws ShopIsClosedException {
+        if (isOpen()) return products.containsKey(barcode);
+        else throw new ShopIsClosedException("You can not use this function until the shop is closed!");
+    }
+
+    @Override
+    public void addNewProduct(Product product, int quantity, float price) throws ProductAlreadyExistsException, ShopIsClosedException {
+//        if (isOpen()) {
+//            for (Product p : products.containsValue()){
+//                if () {
+//                    throw new ProductAlreadyExistsException("This product is already exists");
+//                }
+//            }
+//        }
+//        else throw new ShopIsClosedException("You can not use this function until the shop is closed!");
+
+    }
+
+    @Override
+    public void addProduct(long barcode, int quantity) throws ShopIsClosedException {
+
+    }
+
+    @Override
+    public float getPrice(long barcode) {
+        return 0;
+    }
+
+    @Override
+    public List<Product> getProducts() {
+        return null;
+    }
+
+    @Override
     public String getName() {
         return name;
+    }
+
+    @Override
+    public Product buyProduct(long barcode) throws NoSuchProductException, OutOfStockException, ShopIsClosedException {
+        return null;
+    }
+
+    @Override
+    public List<Product> buyProducts(long barcode, int quantity) throws NoSuchProductException, OutOfStockException, ShopIsClosedException {
+        return null;
+    }
+
+    @Override
+    public Product findByName(String name) throws NoSuchProductException, ShopIsClosedException {
+        return null;
     }
 
     private class ShopEntryImpl {

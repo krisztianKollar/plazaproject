@@ -1,5 +1,9 @@
 package com.codecool.plaza.api;
 
+import com.codecool.plaza.api.exceptions.NoSuchShopException;
+import com.codecool.plaza.api.exceptions.PlazaIsClosedException;
+import com.codecool.plaza.api.exceptions.ShopAlreadyExistsException;
+
 import java.util.List;
 
 public interface Plaza {
