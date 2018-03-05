@@ -31,7 +31,7 @@ public interface Shop {
 
     List<Product> buyProducts(long barcode, int quantity) throws NoSuchProductException, OutOfStockException, ShopIsClosedException;
 
-    float getPrice(long barcode);
+    float getPrice(long barcode) throws NoSuchProductException, ShopIsClosedException;
 
     List<Product> getProducts();
 

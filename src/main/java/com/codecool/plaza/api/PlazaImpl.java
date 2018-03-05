@@ -32,7 +32,7 @@ public class PlazaImpl implements Plaza {
         plazaClosed();
         for (Shop s : shops) {
             if (s.getName().equals(shop.getName())) {
-                throw new ShopAlreadyExistsException("This plaza already has a shop with this name!");
+                throw new ShopAlreadyExistsException("This plaza already has a shop with this name!\n");
             }
         }
         shops.add(shop);
@@ -42,7 +42,7 @@ public class PlazaImpl implements Plaza {
     public void removeShop(Shop shop) throws NoSuchShopException, PlazaIsClosedException {
         plazaClosed();
         if (!shops.contains(shop)) {
-            throw new NoSuchShopException("There is no shop in this plaza with this name RS!");
+            throw new NoSuchShopException("There is no shop in this plaza with this name!\n");
         }
         shops.remove(shop);
     }
@@ -55,7 +55,7 @@ public class PlazaImpl implements Plaza {
                 return s;
             }
         }
-        throw new NoSuchShopException("There is no shop in this plaza with this name FSBN!");
+        throw new NoSuchShopException("There is no shop in this plaza with this name!\n");
     }
 
 
@@ -96,7 +96,7 @@ public class PlazaImpl implements Plaza {
 
     public void plazaClosed() throws PlazaIsClosedException {
         if (!isOpen()) {
-            throw new PlazaIsClosedException("You have to open the plaza first!");
+            throw new PlazaIsClosedException("You have to open the plaza first!\n");
         }
     }
 }
